@@ -1,12 +1,31 @@
 spring:
-  datasource:
-    url: jdbc:h2:tcp://localhost/~/test
-    username: sa
-    driver-class-name: org.h2.Driver
-  jpa:
-    defer-datasource-initialization: true
-    hibernate.ddl-auto: create
-    show-sql: true
-    properties:
-      hibernate.format_sql: true
+  profiles:
+    active: local #default
+    group:
+      local:
+        - common
+      prod:
+        - common
 
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: common
+
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: local
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: prod
