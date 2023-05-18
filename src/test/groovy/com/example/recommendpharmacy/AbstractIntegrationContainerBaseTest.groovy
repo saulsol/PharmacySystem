@@ -17,7 +17,7 @@ abstract class AbstractIntegrationContainerBaseTest extends Specification {
 
         System.setProperty("spring.redis.host", MY_REDIS_CONTAINER.getHost()) // 스프링에게 HOST 포트를 알려줬다.
         System.setProperty("spring.redis.port", MY_REDIS_CONTAINER.getMappedPort(6379).toString())
-        // 스프링에서 host 포트와 연결된 컨테이너 포트를 알려준다.
+        // 스프링에게 host 포트와 연결된 컨테이너 포트를 알려준다.
 
     }
 }
