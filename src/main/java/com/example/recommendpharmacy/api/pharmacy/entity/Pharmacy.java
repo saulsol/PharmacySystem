@@ -29,4 +29,9 @@ public class Pharmacy {
 
     private double longitude; // 경도, X
 
+    public void changePharmacyAddress(String address){
+        this.pharmacyAddress = address;
+    }
+
+
 }
