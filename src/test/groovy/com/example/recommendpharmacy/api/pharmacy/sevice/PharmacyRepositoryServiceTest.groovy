@@ -66,6 +66,33 @@ class PharmacyRepositoryServiceTest extends AbstractIntegrationContainerBaseTest
 
     }
 
+    def "self invocation" (){
+
+        given :
+        String inputAddress = "서울 특별시 성북구 종암동"
+        String name = "은혜 약국"
+        double latitude = 36.11
+        double longitude = 128.11
+
+        def pharmacy = Pharmacy.builder()
+                .pharmacyName(name)
+                .pharmacyName(inputAddress)
+                .longitude(longitude)
+                .latitude(latitude)
+                .build()
+
+        when:
+        pharmacyRepositoryService.bar(Arrays.asList(pharmacy))
+
+        then:
+        def e = thrown(RuntimeException.class)
+        def result = pharmacyRepositoryService.findAll();
+        result.size() == 1
+        // 롤백이 되지 않았음
+
+
+    }
+
 
 
 
